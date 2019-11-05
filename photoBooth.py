@@ -20,3 +20,20 @@ GPIO.setup(13, GPIO.OUT, initial=GPIO.HIGH) # B
 GPIO.setup(16, GPIO.OUT, initial=GPIO.HIGH) # D
 GPIO.setup(17, GPIO.OUT, initial=GPIO.HIGH) # E
 GPIO.setup(27, GPIO.OUT, initial=GPIO.HIGH) # F
+
+try:
+# Setup infinite loop
+	while(1): 
+		
+
+except KeyboardInterrupt: 
+    # This code runs on a Keyboard Interrupt <CNTRL>+C
+	print('\n\n' + 'Program exited on a Keyboard Interrupt' + '\n') 
+
+except: 
+    # This code runs on any error
+	print('\n' + 'Errors occurred causing your program to exit' + '\n')
+
+finally: 
+    # This code runs on every exit and sets any used GPIO pins to input mode.
+	GPIO.cleanup()
