@@ -24,7 +24,7 @@ GPIO.setup(27, GPIO.OUT, initial=GPIO.HIGH) # F
 try:
 # Setup infinite loop
 	while(1): 
-		
+		print()
 
 except KeyboardInterrupt: 
     # This code runs on a Keyboard Interrupt <CNTRL>+C
