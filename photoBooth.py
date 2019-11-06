@@ -7,6 +7,7 @@
 # PhotoBooth
 
 # Import Libraries
+import time
 import RPi.GPIO as GPIO # Raspberry Pi GPIO library
 
 GPIO_A = 12
@@ -37,22 +38,27 @@ for digit in digits:
 	GPIO.output.(digit, 1)
 
 # A B C D E F G
-numberMap = {' ':(0,0,0,0,0,0,0),
-			'0':(1,1,1,1,1,1,0),
-			'1':(0,1,1,0,0,0,0),
-			'2':(1,1,0,1,1,0,1),
-			'3':(1,1,1,1,0,0,1),
-			'4':(0,1,1,0,0,1,1),
-			'5':(1,0,1,1,0,1,1),
-			'6':(1,0,1,1,1,1,1),
-			'7':(1,1,1,0,0,0,0),
-			'8':(1,1,1,1,1,1,1),
-			'9':(1,1,1,1,0,1,1)}
+numberMap = {" ":(0,0,0,0,0,0,0),
+			"0":(1,1,1,1,1,1,0),
+			"1":(0,1,1,0,0,0,0),
+			"2":(1,1,0,1,1,0,1),
+			"3":(1,1,1,1,0,0,1),
+			"4":(0,1,1,0,0,1,1),
+			"5":(1,0,1,1,0,1,1),
+			"6":(1,0,1,1,1,1,1),
+			"7":(1,1,1,0,0,0,0),
+			"8":(1,1,1,1,1,1,1),
+			"9":(1,1,1,1,0,1,1)}
 
 try:
-# Setup infinite loop
 	while(True): 
-		print()
+		output = "0123"
+        for i in range(len(digits):
+            for j in range(len(segments)):
+                GPIO.output(segments[j], numberMap[output[i]][j])
+            GPIO.output(digits[i], 0)
+            time.sleep(0.001)
+            GPIO.output(digits[i], 1)
 
 except KeyboardInterrupt: 
     # This code runs on a Keyboard Interrupt <CNTRL>+C
