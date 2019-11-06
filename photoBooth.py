@@ -9,21 +9,49 @@
 # Import Libraries
 import RPi.GPIO as GPIO # Raspberry Pi GPIO library
 
+GPIO_A = 12
+GPIO_B = 13
+GPIO_C = 6
+GPIO_D = 16
+GPIO_E = 17
+GPIO_F = 27
+GPIO_G = 5
+
 # Setup GPIO
 GPIO.setwarnings(False) # Ignore warnings
 GPIO.setmode(GPIO.BCM) # Use BCM Pin numbering
+
 GPIO.setup(4, GPIO.OUT, initial=GPIO.HIGH) # DP
-GPIO.setup(5, GPIO.OUT, initial=GPIO.HIGH) # G
-GPIO.setup(6, GPIO.OUT, initial=GPIO.HIGH) # C
-GPIO.setup(12, GPIO.OUT, initial=GPIO.HIGH) # A
-GPIO.setup(13, GPIO.OUT, initial=GPIO.HIGH) # B
-GPIO.setup(16, GPIO.OUT, initial=GPIO.HIGH) # D
-GPIO.setup(17, GPIO.OUT, initial=GPIO.HIGH) # E
-GPIO.setup(27, GPIO.OUT, initial=GPIO.HIGH) # F
+
+segments = (GPIO_A, GPIO_B, GPIO_C, GPIO_D, GPIO_E, GPIO_F, GPIO_G)
+# digits = () #TODO
+
+# sets all segments off
+for segment in segments:
+	GPIO.setup(segment, GPIO.OUT)
+	GPIO.output.(segment, 0)
+	
+# sets all digits to 1, aka not grounded
+for digit in digits:
+	GPIO.setup(digit, GPIO.OUT)
+	GPIO.output.(digit, 1)
+
+# A B C D E F G
+numberMap = {' ':(0,0,0,0,0,0,0),
+			'0':(1,1,1,1,1,1,0),
+			'1':(0,1,1,0,0,0,0),
+			'2':(1,1,0,1,1,0,1),
+			'3':(1,1,1,1,0,0,1),
+			'4':(0,1,1,0,0,1,1),
+			'5':(1,0,1,1,0,1,1),
+			'6':(1,0,1,1,1,1,1),
+			'7':(1,1,1,0,0,0,0),
+			'8':(1,1,1,1,1,1,1),
+			'9':(1,1,1,1,0,1,1)}
 
 try:
 # Setup infinite loop
-	while(1): 
+	while(True): 
 		print()
 
 except KeyboardInterrupt: 
